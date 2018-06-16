@@ -55,9 +55,6 @@ void Stack_free(Stack_T psStack) {
 
    psNode = psStack -> psFirst;
    while (psNode != NULL) {
-      if (psNode -> pvItem != NULL) {
-         free(psNode -> pvItem);
-      }
       psPrev = psNode;
       psNode = psNode -> psNext;
       free(psPrev);

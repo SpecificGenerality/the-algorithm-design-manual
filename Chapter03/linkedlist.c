@@ -1,19 +1,23 @@
+/*----------------------------------------------------------*/
+/* linkedlist.c                                             */
+/* Author: Justin Yan                                       */
+/*----------------------------------------------------------*/
 #include "linkedlist.h"
 #include <assert.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
-
+/*----------------------------------------------------------*/
 struct LList {
    unsigned long ulSize;
    Node_T psFirst;
 };
-
+/*----------------------------------------------------------*/
 struct Node {
    void * pvItem;
    Node_T psNext;
 };
-
+/*----------------------------------------------------------*/
 void LList_insert(LList_T psLList, void * pvItem) {
    Node_T psNewNode;
    assert(psLList != NULL);
@@ -30,7 +34,7 @@ void LList_insert(LList_T psLList, void * pvItem) {
    psLList -> psFirst = psNewNode;
    psLList -> ulSize++;
 }
-
+/*----------------------------------------------------------*/
 int LList_delete(LList_T psLList, void * pvItem) {
    Node_T psNode;
    Node_T psPrevNode;
@@ -56,7 +60,7 @@ int LList_delete(LList_T psLList, void * pvItem) {
    return 0;
 
 }
-
+/*----------------------------------------------------------*/
 LList_T LList_new() {
    LList_T psLList;
    psLList = (LList_T) malloc(sizeof(struct LList));
@@ -70,7 +74,7 @@ LList_T LList_new() {
    psLList -> ulSize = 0;
    return psLList;
 }
-
+/*----------------------------------------------------------*/
 void LList_free(LList_T psLList) {
    Node_T psNode;
    Node_T psNext;
@@ -79,8 +83,7 @@ void LList_free(LList_T psLList) {
 
    psNode = psLList -> psFirst;
    while (psNode != NULL) {
-      psNext = psNode -> psNext;
-      free(psNode -> pvItem);
+      psNext = psNode -> psNext;     
       free(psNode);
       psNode = psNext;
    }
