@@ -94,5 +94,29 @@ unsigned long LList_size(LList_T psLList) {
    return psLList -> ulSize;
 }
 /*----------------------------------------------------------*/
-void LList_print()
+void LList_print(LList_T psLList) {
+   Node_T psNode;
 
+   assert(psLList != NULL);
+   psNode = psLList -> psFirst;
+   while (psNode != NULL) {
+      fprintf(stdout, "%s ", psNode -> pvItem);
+      fprintf(stdout, "\n");
+   }
+}
+/*----------------------------------------------------------*/
+LList_T LList_create(const char * pcLine) {
+   LList_T psLList;
+   char * pcLineCpy = (char *) pcLine;
+   char cChar;
+
+   assert(pcLine != NULL);
+
+   psLList = LList_new();
+   while ((cChar = *pcLineCpy) != '\0') {
+      Llist_push(psLList, &cChar);
+      pcLineCpy++;
+   }
+   return psLList;
+}
+/*----------------------------------------------------------*/
