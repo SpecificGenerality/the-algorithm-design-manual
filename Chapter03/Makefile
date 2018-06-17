@@ -9,3 +9,9 @@ clean:
 reader.o: reader.h
 stack.o: stack.h
 3-1.o: stack.h reader.h
+
+3-2: linkedlist.o reader.o 3-2.o
+	$(gcc217) $(CFLAGS) linkedlist.o reader.o 3-2.o -o 3-2
+reader.o: reader.h
+linkedlist.o: linkedlist.h
+3-2.o: linkedlist.h reader.h
