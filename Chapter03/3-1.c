@@ -32,13 +32,22 @@ int isValidNesting(const char * pcLine) {
 
    while((cChar = *pcLineCpy) != '\0') {
       if (cChar == '(') Stack_push(psStack, &cChar);
-      else pvPop = Stack_pop(psStack);
-      if (pvPop == NULL) {
-         Stack_free(psStack);
-         return FALSE;
+      else {
+         pvPop = Stack_pop(psStack);
+         if (pvPop == NULL) {
+            Stack_free(psStack);
+            return FALSE;
+         }
       }
       pcLineCpy++;
    }
+
+   if (Stack_size(psStack) != 0) {
+      Stack_free(psStack);
+      return FALSE;
+   }
+
+   Stack_free(psStack);
    return TRUE;
 }
 

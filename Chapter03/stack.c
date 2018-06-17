@@ -74,7 +74,7 @@ void Stack_push(Stack_T psStack, void * pvItem) {
    }
    psFirst  = psStack -> psFirst;
    psNode -> pvItem = pvItem;
-   psNode -> psNext = psFirst -> psNext;
+   psNode -> psNext = psFirst;
    psFirst -> psNext= psNode;
    psStack -> ulSize++;
 }
