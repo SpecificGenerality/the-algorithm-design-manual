@@ -29,7 +29,6 @@ void LList_insert(LList_T psLList, void * pvItem) {
    }
 
    psNewNode -> pvItem = pvItem;
-
    psNewNode -> psNext = psLList -> psFirst;
    psLList -> psFirst = psNewNode;
    psLList -> ulSize++;
@@ -89,4 +88,11 @@ void LList_free(LList_T psLList) {
    }
    free(psLList);
 }
+/*----------------------------------------------------------*/
+unsigned long LList_size(LList_T psLList) {
+   assert(psLList != NULL);
+   return psLList -> ulSize;
+}
+/*----------------------------------------------------------*/
+void LList_print()
 
