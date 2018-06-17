@@ -9,9 +9,12 @@ enum Boolean { FALSE, TRUE };
 
 static int isValid(const char * pcLine) {
    char cChar;
-   cChar = *pcLine;
-   while (cChar != '\0') {
-      if (cChar != '(' || cChar != ')') return FALSE;
+   char * pcLineCpy;
+   assert(pcLine != NULL);
+   pcLineCpy = (char *) pcLine;
+   while ((cChar = *pcLineCpy)!= '\0') {
+      if (cChar != '(' && cChar != ')') return FALSE;
+      pcLineCpy++;
    }
    return TRUE;
 }
@@ -27,13 +30,14 @@ int isValidNesting(const char * pcLine) {
    pcLineCpy = (char *) pcLine;
    pvPop = NULL;
 
-   while((cChar = *pcLineCpy++) != '\0') {
+   while((cChar = *pcLineCpy) != '\0') {
       if (cChar == '(') Stack_push(psStack, &cChar);
       else pvPop = Stack_pop(psStack);
       if (pvPop == NULL) {
          Stack_free(psStack);
          return FALSE;
       }
+      pcLineCpy++;
    }
    return TRUE;
 }

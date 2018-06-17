@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+
 char * readLine(FILE *psFile)
 {
    /* line length starts at size two characters */
@@ -27,7 +31,7 @@ char * readLine(FILE *psFile)
    pcLine = (char*)malloc(uPhysLineLength);
    if (pcLine == NULL)
       {
-         fprintf(stderr,"%s %s\n", pcPgmName, 
+         fprintf(stderr,"%s\n", 
             "readLine: memory allocation failed");
          exit(EXIT_FAILURE);
       }
@@ -41,7 +45,7 @@ char * readLine(FILE *psFile)
          pcLine = (char*)realloc(pcLine, uPhysLineLength);
          if (pcLine == NULL)
             {
-               fprintf(stderr,"%s %s\n", pcPgmName, 
+               fprintf(stderr,"%s\n", 
                   "readLine: memory allocation failed");
                exit(EXIT_FAILURE);}
       }
@@ -57,7 +61,7 @@ char * readLine(FILE *psFile)
       pcLine = (char*)realloc(pcLine, uPhysLineLength);
       if (pcLine == NULL)
          {
-            fprintf(stderr,"%s %s\n", pcPgmName, 
+            fprintf(stderr,"%s\n", 
                "readLine: memory allocation failed");
             exit(EXIT_FAILURE);}
    }
