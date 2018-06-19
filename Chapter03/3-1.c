@@ -18,7 +18,8 @@ static int isValid(const char * pcLine) {
    }
    return TRUE;
 }
-int isValidNesting(const char * pcLine) {
+
+static int isValidNesting(const char * pcLine) {
    Stack_T psStack;
    char cChar;
    void * pvPop;

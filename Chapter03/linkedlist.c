@@ -57,7 +57,6 @@ int LList_delete(LList_T psLList, void * pvItem) {
       psNode = psNode -> psNext;
    }
    return 0;
-
 }
 /*----------------------------------------------------------*/
 LList_T LList_new() {
